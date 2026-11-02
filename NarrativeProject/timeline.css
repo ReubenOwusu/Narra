@@ -1,0 +1,1432 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #202124;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   2. UNIFIED 3-COLUMN APP HEADER
+   ========================================================================== */
+.unified-header {
+  height: 56px;
+  min-height: 56px;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 200;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+.header-center {
+  justify-content: center;
+  gap: 12px;
+}
+
+.header-right {
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* Branding & Project Selector */
+.project-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: #111827;
+  letter-spacing: -0.3px;
+}
+
+.divider {
+  color: #d1d5db;
+  font-weight: 400;
+}
+
+.project-select {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  outline: none;
+  transition: background-color 0.15s;
+}
+
+.project-select:hover {
+  background-color: #f3f4f6;
+}
+
+/* Global Navigation Tabs */
+.global-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-tab {
+  border: none;
+  background: transparent;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5f6368;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.nav-tab:hover {
+  background-color: #f1f3f4;
+  color: #202124;
+}
+
+.nav-tab.active {
+  background-color: #e8f0fe;
+  color: #1967d2;
+  font-weight: 600;
+}
+
+/* Search Bar */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-container svg {
+  position: absolute;
+  left: 10px;
+  color: #888;
+  pointer-events: none;
+}
+
+.search-input {
+  padding: 8px 12px 8px 32px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: #f1f3f4;
+  font-size: 13px;
+  width: 240px;
+  height: 32px;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  outline: none;
+}
+
+.search-input:hover {
+  background-color: #e8eaed;
+}
+
+.search-input:focus {
+  width: 320px;
+  background-color: #ffffff;
+  border: 1px solid #4A90E2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* Right-Side Header Tools, Avatars & Share */
+.header-tools-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #e0e0e0;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #5f6368;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.icon-btn:hover {
+  background-color: #f1f3f4;
+  color: #202124;
+}
+
+.icon-btn.active {
+  background-color: rgba(74, 144, 226, 0.12);
+  color: #4A90E2;
+}
+
+.sync-status {
+  color: #5f6368;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-group {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  margin-left: -6px;
+  user-select: none;
+}
+
+.user-avatar:first-child {
+  margin-left: 0;
+}
+
+.bg-blue { background-color: #4A90E2; }
+.bg-green { background-color: #27ae60; }
+.bg-purple { background-color: #9b51e0; }
+
+.share-btn {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.share-btn:hover {
+  background-color: #2563eb;
+}
+
+/* ==========================================================================
+   3. TIMELINE WORKSPACE & EXPANDABLE GRID BOARD
+   ========================================================================== */
+.timeline-workspace {
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 56px);
+  overflow: auto;
+  position: relative;
+  background-color: #ffffff;
+  padding-bottom: 240px; /* Clearance so the bottom row is never trapped under Idea Tray */
+}
+
+.timeline-board {
+  display: inline-block;
+  min-width: 100%;
+}
+
+.timeline-row {
+  display: grid;
+  grid-template-columns: 200px repeat(3, 280px) 180px;
+  border-bottom: 1px solid #eaecef;
+  position: relative;
+  background-color: #ffffff;
+}
+
+/* Suppress any row-wide lines or placeholder lines so tracks never bleed past the cap */
+.timeline-row::before,
+.timeline-row::after,
+.add-chapter-placeholder::before,
+.add-chapter-placeholder::after,
+.add-chapter-cell::before,
+.add-chapter-cell::after,
+.add-plotline-row::before,
+.add-plotline-row::after {
+  display: none !important;
+  content: none !important;
+}
+
+.grid-cell,
+.timeline-cell {
+  border-right: 1px solid #eaecef;
+  position: relative;
+}
+
+/* Top Header Row (Chapter Columns) */
+.header-row,
+.timeline-header-row {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: #fafafa;
+  height: 48px;
+}
+
+.corner-cell {
+  position: sticky;
+  left: 0;
+  z-index: 45;
+  background-color: #f1f3f5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 12px;
+}
+
+.chapter-cell,
+.chapter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: #fafafa;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5f6368;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.chapter-label-input {
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5f6368;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  width: 100%;
+  outline: none;
+}
+
+.chapter-label-input:hover {
+  background-color: #f1f3f4;
+}
+
+.chapter-label-input:focus {
+  background-color: #ffffff;
+  border-color: #4A90E2;
+}
+
+.chapter-cell .add-scene-btn {
+  opacity: 0;
+  background: transparent;
+  border: none;
+  color: #5f6368;
+  font-size: 16px;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s, background-color 0.15s;
+}
+
+.chapter-cell:hover .add-scene-btn {
+  opacity: 1;
+}
+
+.chapter-cell .add-scene-btn:hover {
+  background-color: #e8eaed;
+  color: #202124;
+}
+
+/* Add Chapter & Add Plotline Ghost Buttons */
+.add-chapter-cell {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background-color: #fafafa;
+  border-right: none;
+}
+
+.add-plotline-row {
+  border-bottom: none;
+}
+
+.add-plotline-header {
+  border-right: none;
+  background-color: transparent !important;
+}
+
+.ghost-btn,
+.add-chapter-btn,
+.add-plotline-btn {
+  background: transparent;
+  border: none;
+  color: #5f6368;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.ghost-btn:hover,
+.add-chapter-btn:hover,
+.add-plotline-btn:hover {
+  background-color: #f1f3f4;
+  color: #202124;
+}
+
+/* Left Plotline Headers */
+.plotline-header {
+  position: sticky;
+  left: 0;
+  z-index: 30;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border-right: 1px solid #eaecef;
+}
+
+.drag-handle {
+  color: #c4c7c5;
+  font-size: 14px;
+  cursor: grab;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+
+.plotline-header:hover .drag-handle {
+  opacity: 1;
+}
+
+.drag-handle:hover {
+  color: #5f6368;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.plotline-color,
+.plotline-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.plotline-name-input,
+.plotline-title {
+  border: 1px solid transparent;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #202124;
+  padding: 4px 6px;
+  border-radius: 4px;
+  width: 100%;
+  outline: none;
+}
+
+.plotline-name-input:hover,
+.plotline-title[contenteditable="true"]:hover {
+  background-color: #f1f3f4;
+}
+
+.plotline-name-input:focus,
+.plotline-title[contenteditable="true"]:focus {
+  background-color: #ffffff;
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.focus-btn {
+  background: transparent;
+  border: none;
+  color: #9aa0a6;
+  cursor: pointer;
+  opacity: 0;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s, color 0.15s, background-color 0.15s;
+}
+
+.plotline-header:hover .focus-btn {
+  opacity: 1;
+}
+
+.focus-btn:hover {
+  color: #202124;
+  background-color: #f1f3f4;
+}
+
+/* Delete Chapter & Plotline Buttons */
+.delete-item-btn {
+  background: transparent;
+  border: none;
+  color: #9aa0a6;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, background-color 0.15s, color 0.15s;
+  margin-left: 4px;
+  flex-shrink: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.chapter-cell:hover .delete-item-btn,
+.plotline-header:hover .delete-item-btn {
+  opacity: 1;
+}
+
+.delete-item-btn:hover {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+/* Plotline Row Drag-and-Swap Visuals */
+.timeline-row.row-dragging {
+  opacity: 0.45;
+  background-color: #f8fafc;
+}
+
+.timeline-row.row-drag-over {
+  box-shadow: inset 0 3px 0 0 #4A90E2;
+}
+
+/* ==========================================================================
+   4. TRACK CELLS, HORIZONTAL PLOTLINES & DRAGGABLE ENDPOINT CAPS
+   ========================================================================== */
+.track-cell {
+  position: relative;
+  min-height: 145px;
+  padding: 16px; /* Clean, symmetrical padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Placeholder cells at the end of rows */
+.track-cell.add-chapter-placeholder,
+.grid-cell.add-chapter-cell:not(.header-row .add-chapter-cell) {
+  pointer-events: none;
+  border-right: none;
+  background: transparent;
+}
+
+/* Default Row Colors */
+.row-blue {
+  --row-color: #a0c4ff;
+  --handle-color: #4A90E2;
+}
+
+.row-purple {
+  --row-color: #d8b4f8;
+  --handle-color: #9b51e0;
+}
+
+/* Per-Cell Horizontal Plotline Track */
+.track-cell:not(.add-chapter-placeholder):not(.add-chapter-cell):not(.inactive-track)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background-color: var(--row-color, #b3d4fc);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Suppress track line in chapters beyond the user's endpoint handle */
+.track-cell.inactive-track::before,
+.track-cell.inactive-track::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Color-Matched Draggable Endpoint Handle */
+.track-cell.is-endpoint {
+  position: relative;
+}
+
+.endpoint-handle {
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 28px;
+  background-color: var(--handle-color, #4A90E2);
+  border-radius: 3px;
+  cursor: ew-resize;
+  z-index: 15;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+
+.endpoint-handle:hover,
+.endpoint-handle.is-resizing {
+  filter: brightness(0.9);
+  transform: translateY(-50%) scale(1.18);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================================================
+   5. SCENE CARDS & DROP ZONE INDICATORS
+   ========================================================================== */
+.scene-card {
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 14px;
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  margin: auto 0; /* FORCES strict vertical centering within the flex cell */
+}
+
+
+
+.scene-card:hover {
+  border-color: #c4c7c5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.scene-card:active {
+  cursor: grabbing;
+}
+
+/* Highlighted state when loaded in the Inspector Panel */
+.scene-card.active-card {
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+  z-index: 10;
+}
+
+/* Ghost slot left behind while dragging */
+.scene-card.is-dragging {
+  opacity: 0.35;
+  border: 1px dashed #4A90E2;
+  box-shadow: none;
+}
+
+.scene-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #202124;
+  margin-bottom: 6px;
+}
+
+.scene-summary {
+  font-size: 12px;
+  color: #5f6368;
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.scene-card .scene-summary:last-child {
+  margin-bottom: 0;
+}
+
+.scene-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #f1f3f4;
+  color: #5f6368;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Snap Drop Target Highlight */
+.drop-zone.drag-hover {
+  background-color: rgba(74, 144, 226, 0.05);
+  box-shadow: inset 0 0 0 2px #4A90E2;
+  border-radius: 8px;
+}
+
+.tray-content.drag-hover {
+  background-color: rgba(74, 144, 226, 0.05);
+  box-shadow: inset 0 0 0 2px #4A90E2;
+}
+
+/* ==========================================================================
+   6. SLIDE-OUT INSPECTOR PANEL (RIGHT DOCK)
+   ========================================================================== */
+.inspector-panel {
+  position: fixed;
+  top: 56px;
+  right: 0;
+  width: 320px;
+  height: calc(100vh - 56px);
+  background-color: #ffffff;
+  border-left: 1px solid #e0e0e0;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.inspector-panel.active {
+  transform: translateX(0);
+}
+
+.inspector-header {
+  height: 52px;
+  padding: 0 20px;
+  border-bottom: 1px solid #eaecef;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inspector-header h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #202124;
+}
+
+.inspector-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inspector-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inspector-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #5f6368;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.inspector-text-input,
+.inspector-textarea,
+.inspector-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  font-family: inherit;
+  font-size: 13px;
+  color: #202124;
+  outline: none;
+  transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s;
+}
+
+.inspector-textarea {
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.inspector-text-input:focus,
+.inspector-textarea:focus,
+.inspector-select:focus {
+  background-color: #ffffff;
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.inspector-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+}
+
+.remove-tag-btn {
+  background: transparent;
+  border: none;
+  color: #5f6368;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.tag-input {
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  outline: none;
+  flex: 1;
+  min-width: 80px;
+}
+
+/* ==========================================================================
+   7. BOTTOM IDEA TRAY (COLLAPSIBLE DRAWER)
+   ========================================================================== */
+.idea-tray {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 216px;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  z-index: 90;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Slides down so only the 40px header bar remains visible */
+.idea-tray.collapsed {
+  transform: translateY(calc(100% - 40px));
+}
+
+.tray-header {
+  height: 40px;
+  min-height: 40px;
+  padding: 0 20px;
+  border-bottom: 1px solid #f1f3f4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  background-color: #fafafa;
+}
+
+.tray-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5f6368;
+}
+
+.toggle-tray-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.idea-tray.collapsed .toggle-tray-btn svg {
+  transform: rotate(180deg);
+}
+
+.tray-content {
+  flex: 1;
+  padding: 16px 20px;
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.add-unplaced-btn,
+.idea-tray .add-scene-btn {
+  width: 110px;
+  min-width: 110px;
+  border: 1px dashed #c4c7c5;
+  border-radius: 8px;
+  background-color: #fafafa;
+  color: #5f6368;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.add-unplaced-btn span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.add-unplaced-btn:hover,
+.idea-tray .add-scene-btn:hover {
+  border-color: #4A90E2;
+  background-color: rgba(74, 144, 226, 0.04);
+  color: #4A90E2;
+}
+
+.scene-card.unplaced-card,
+.tray-content .scene-card {
+  width: 240px;
+  min-width: 240px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   8. DYNAMIC & INTERACTIVE MINIMAP
+   ========================================================================== */
+.minimap-container {
+  position: fixed !important;
+  left: auto !important;
+  top: auto !important;
+  bottom: 228px !important;
+  right: 12px !important;
+  z-index: 95;
+
+  /* Idle Translucent State */
+  opacity: 0.35;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(224, 224, 224, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 8px;
+  transition: bottom 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              right 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.2s ease,
+              background-color 0.2s ease,
+              box-shadow 0.2s ease,
+              transform 0.2s ease;
+  user-select: none;
+}
+
+/* Solid Design when Hovered or Actively Dragging */
+.minimap-container:hover,
+.minimap-container.is-using {
+  opacity: 1;
+  background: #ffffff;
+  border-color: #e0e0e0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Docks right above the 40px header when Idea Tray is collapsed */
+body.tray-is-collapsed .minimap-container {
+  bottom: 52px !important;
+}
+
+/* Hugs the left border of the 320px Scene Details panel (320px + 12px gap) */
+body.inspector-is-open .minimap-container {
+  right: 332px !important;
+}
+
+/* Completely hidden when toggled off via the Header Map Button */
+.minimap-container.hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(8px) scale(0.95);
+}
+
+.minimap-board {
+  position: relative;
+  width: 170px;
+  height: 96px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: crosshair;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 6px 0;
+}
+
+.minimap-row {
+  position: relative;
+  height: 8px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.minimap-card {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  border-radius: 2px;
+}
+
+.minimap-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid #4A90E2;
+  background-color: rgba(74, 144, 226, 0.12);
+  border-radius: 3px;
+  cursor: grab;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+.minimap-viewport:active {
+  cursor: grabbing;
+}
+/* ==========================================================================
+   9. EMPTY CELL "+ NEW SCENE" HOVER PROMPT
+   ========================================================================== */
+.cell-new-scene-prompt {
+  position: absolute; /* Removes the prompt from flex flow so it NEVER pushes scene cards down */
+  inset: 24px 16px;   /* Sits centered inside the cell with 24px top/bottom & 16px left/right padding */
+  border: 1.5px dashed #c4c7c5;
+  border-radius: 8px;
+  background-color: rgba(250, 250, 250, 0.85);
+  color: #5f6368;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.98);
+  transition: opacity 0.15s ease, transform 0.15s ease, border-color 0.15s, background-color 0.15s, color 0.15s;
+  z-index: 3;
+}
+
+/* Completely remove prompt from rendering when the cell already has a scene card */
+.track-cell.has-cards .cell-new-scene-prompt {
+  display: none !important;
+}
+
+.cell-new-scene-prompt span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Only show the "+ New Scene" box when hovering an empty, active cell */
+.track-cell:not(.has-cards):not(.inactive-track):not(.add-chapter-placeholder):not(.add-chapter-cell):hover .cell-new-scene-prompt {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.cell-new-scene-prompt:hover {
+  border-color: #4A90E2;
+  background-color: rgba(74, 144, 226, 0.06);
+  color: #4A90E2;
+}
+
+/* Highlight the target cell while filling out Scene Details for a new card */
+.track-cell.pending-target-cell {
+  background-color: rgba(74, 144, 226, 0.04);
+  box-shadow: inset 0 0 0 2px #4A90E2;
+  border-radius: 8px;
+}
+
+.track-cell.pending-target-cell .cell-new-scene-prompt {
+  opacity: 1;
+  border-color: #4A90E2;
+  color: #4A90E2;
+}
+
+/* ==========================================================================
+   10. INSPECTOR SAVE/CANCEL FOOTER & POPOVER MENUS
+   ========================================================================== */
+.inspector-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #eaecef;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.inspector-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.btn-primary {
+  background-color: #4A90E2;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-primary:hover {
+  background-color: #357abd;
+}
+
+.btn-secondary {
+  background-color: #f1f3f4;
+  color: #3c4043;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-secondary:hover {
+  background-color: #e8eaed;
+}
+
+.btn-danger-ghost {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-danger-ghost:hover {
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+/* Floating Popover Menus (Filter, View Options, Timeline Settings) */
+.narra-popover {
+  position: fixed;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 12px;
+  min-width: 220px;
+  z-index: 300;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.narra-popover.open {
+  display: flex;
+}
+
+.popover-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #5f6368;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.popover-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #202124;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+}
+
+.popover-item:hover {
+  background-color: #f1f3f4;
+}
+
+.popover-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.filter-tag-pill {
+  border: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+  color: #5f6368;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-tag-pill.active {
+  background-color: #e8f0fe;
+  border-color: #4A90E2;
+  color: #1967d2;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   11. FOCUS MODE, FILTER DIMMING, COMPACT VIEW & TOAST NOTIFICATIONS
+   ========================================================================== */
+/* Plotline Focus Mode */
+.timeline-board.focus-mode-active .timeline-row:not(.header-row):not(.add-plotline-row):not(.focused-row) {
+  opacity: 0.22;
+  filter: grayscale(60%);
+  transition: opacity 0.25s, filter 0.25s;
+}
+
+.focus-btn.active {
+  opacity: 1 !important;
+  color: #4A90E2;
+  background-color: rgba(74, 144, 226, 0.12);
+}
+
+/* Search & Tag Filtering */
+.scene-card.filtered-out {
+  opacity: 0.18;
+  transform: scale(0.96);
+  pointer-events: none;
+}
+
+/* View Option Modifiers */
+body.compact-cards .scene-summary {
+  display: none !important;
+}
+
+body.hide-card-tags .scene-tags {
+  display: none !important;
+}
+
+/* Toast Notification */
+.narra-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background-color: #202124;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 400;
+}
+
+.narra-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+/* --- WORKSPACE PANNING STATES --- */
+.timeline-workspace.is-panning-ready {
+  cursor: grab !important;
+}
+
+.timeline-workspace.is-panning-ready * {
+  pointer-events: none; /* Prevents accidentally clicking or dragging cards while panning */
+}
+
+.timeline-workspace.is-panning-active {
+  cursor: grabbing !important;
+}
+/* --- BRAND LOGO LINK --- */
+a.brand-name {
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+a.brand-name:hover {
+  color: #4A90E2;
+}
+/* --- MORE OPTIONS DASHBOARD BUTTON --- */
+.more-opts-btn {
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #5f6368;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.more-opts-btn:hover {
+  background-color: #f1f3f4;
+  color: #202124;
+}
+
+/* --- POPOVER MENUS --- */
+.narra-popover {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 8px;
+  display: none; /* FIXED: Keeps the timeline settings menu hidden by default! */
+  position: absolute;
+  z-index: 1000;
+}
+
+.popover-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #202124;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+  transition: background-color 0.15s;
+}
+
+.popover-item:hover {
+  background-color: #f1f3f4;
+}
+/* --- LIVE @ MENTION DROPDOWN --- */
+.mention-dropdown {
+  position: fixed;
+  display: none;
+  background: #ffffff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  z-index: 10000;
+  max-width: 300px;
+  max-height: 220px;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+.mention-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #f1f3f4;
+  transition: background 0.15s ease;
+}
+
+.mention-item:last-child {
+  border-bottom: none;
+}
+
+.mention-item:hover {
+  background: #f8f9fa;
+}
+.mention-item.focused {
+  background: #e8f0fe;
+  border-left: 3px solid #1a73e8;
+  padding-left: 13px; /* Offsets the 3px border to keep text aligned */
+}
+
+.mention-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.mention-desc {
+  font-size: 12px;
+  color: #5f6368;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+.chapter-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #202124;
+}
+
+.scene-card {
+  font-size: 14px;
+  font-weight: 400;
+  color: #3c4043;
+  line-height: 1.4;
+}
+
+.inspector-panel h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #202124;
+}
